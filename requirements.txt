@@ -1,0 +1,4 @@
+certifi==2018.8.13
+future==0.16.0
+python-dotenv==0.9.1
+python-telegram-bot==10.1.0
