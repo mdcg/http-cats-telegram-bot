@@ -1,6 +1,6 @@
 from telegram.ext import CommandHandler, Filters, MessageHandler, Updater
 
-from conf.settings import TELEGRAM_TOKEN, HTTP_CATS_URL
+from conf.settings import HTTP_CATS_URL, TELEGRAM_TOKEN
 
 
 def start(bot, update):
