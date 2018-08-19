@@ -1,6 +1,6 @@
 from telegram.ext import CommandHandler, Filters, MessageHandler, Updater
 
-from conf.settings import TELEGRAM_TOKEN
+from conf.settings import TELEGRAM_TOKEN, HTTP_CATS_URL
 
 
 def start(bot, update):
@@ -11,7 +11,10 @@ def start(bot, update):
 
 
 def http_cats(bot, update, args):
-    pass
+    bot.sendPhoto(
+        chat_id=update.message.chat_id,
+        photo=HTTP_CATS_URL + args[0]
+    )
 
 
 def unknown(bot, update):
