@@ -5,16 +5,22 @@ from conf.settings import BASE_API_URL, TELEGRAM_TOKEN
 
 def start(update, context):
     response_message = "=^._.^="
-    context.bot.send_message(chat_id=update.effective_chat.id, text=response_message)
+    context.bot.send_message(
+        chat_id=update.effective_chat.id, text=response_message
+    )
 
 
 def http_cats(update, context):
-    context.bot.sendPhoto(chat_id=update.effective_chat.id, photo=BASE_API_URL + context.args[0])
+    context.bot.sendPhoto(
+        chat_id=update.effective_chat.id, photo=BASE_API_URL + context.args[0]
+    )
 
 
 def unknown(update, context):
     response_message = "Meow? =^._.^="
-    context.bot.send_message(chat_id=update.effective_chat.id, text=response_message)
+    context.bot.send_message(
+        chat_id=update.effective_chat.id, text=response_message
+    )
 
 
 def main():
