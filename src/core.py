@@ -3,18 +3,18 @@ from telegram.ext import CommandHandler, Filters, MessageHandler, Updater
 from conf.settings import BASE_API_URL, TELEGRAM_TOKEN
 
 
-def start(bot, update):
+def start(update, context):
     response_message = "=^._.^="
-    bot.send_message(chat_id=update.message.chat_id, text=response_message)
+    context.bot.send_message(chat_id=update.effective_chat.id, text=response_message)
 
 
-def http_cats(bot, update, args):
-    bot.sendPhoto(chat_id=update.message.chat_id, photo=BASE_API_URL + args[0])
+def http_cats(update, context):
+    context.bot.sendPhoto(chat_id=update.effective_chat.id, photo=BASE_API_URL + context.args[0])
 
 
-def unknown(bot, update):
+def unknown(update, context):
     response_message = "Meow? =^._.^="
-    bot.send_message(chat_id=update.message.chat_id, text=response_message)
+    context.bot.send_message(chat_id=update.effective_chat.id, text=response_message)
 
 
 def main():
@@ -26,7 +26,7 @@ def main():
 
     # on different commands - answer in Telegram
     dispatcher.add_handler(CommandHandler("start", start))
-    dispatcher.add_handler(CommandHandler("http", http_cats, pass_args=True))
+    dispatcher.add_handler(CommandHandler("http", http_cats))
     dispatcher.add_handler(MessageHandler(Filters.command, unknown))
 
     # Start the Bot
